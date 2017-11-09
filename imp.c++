@@ -127,9 +127,11 @@ main(int argc, char **argv)
             nondigit = true;
         if (nondigit)
           o << '#';
-        o << j << "\t" << word << std::endl;
+        o << j << "\t" << ">" << word << std::endl;
       }
     }
+    o.close();
+    system_desu("${EDITOR:-vi} " + config);
   } else if (argc == 2 && std::string("check") == argv[1]) {
     std::map<std::string, std::map<std::string, std::function<bool (int)>>> triggers;
     // read config
